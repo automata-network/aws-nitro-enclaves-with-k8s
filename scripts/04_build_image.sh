@@ -6,9 +6,13 @@
 # Main
 ####################################################
 
+to_lower_case() {
+  echo $1 | awk '{print tolower($0)}'
+}
+
 main() {
   local project_name=$1
-  local image="$project_name-$CONFIG_SETUP_UUID:latest"
+  local image="$project_name-$(to_lower_case ${CONFIG_SETUP_UUID}):latest"
   local build_path=$WORKING_DIR/container
   local dockerfile_path=$build_path/$project_name/Dockerfile
 
