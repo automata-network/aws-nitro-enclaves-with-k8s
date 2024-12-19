@@ -6,9 +6,13 @@
 # Main
 ####################################################
 
+to_lower_case() {
+  echo $1 | awk '{print tolower($0)}'
+}
+
 main() {
   local tool_image_name=$1
-  local image_name="$tool_image_name-$CONFIG_SETUP_UUID"
+  local image_name="$tool_image_name-$(to_lower_case ${CONFIG_SETUP_UUID})"
   local repository_uri=$(get_repository_uri $image_name)
 
   [[ "$repository_uri" == "null" || "$repository_uri" == "" ]] && {

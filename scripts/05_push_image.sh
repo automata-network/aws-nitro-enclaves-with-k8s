@@ -21,13 +21,17 @@ create_ecr_repository() {
       --image-tag-mutability MUTABLE
 }
 
+to_lower_case() {
+  echo $1 | awk '{print tolower($0)}'
+}
+
 ###################################################
 # Main
 ####################################################
 
 main() {
   local project_name=$1
-  local repo_name="$project_name-$CONFIG_SETUP_UUID"
+  local repo_name="$project_name-$(to_lower_case ${CONFIG_SETUP_UUID})"
 
   repository_exists $repo_name || {
     say_warn "Creating an ECR repository: $repo_name."
