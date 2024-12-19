@@ -16,7 +16,7 @@
             "aarch64": {
                 "file_path": "examples/aarch64/hello",
                 "file_name": "Dockerfile",
-                "build_path": "examples/aarch/hello"
+                "build_path": "examples/aarch64/hello"
             }
         }
     }
