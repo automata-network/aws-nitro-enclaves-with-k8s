@@ -41,7 +41,7 @@ FROM amazonlinux:2 as image
 # Copying dependencies of the enclave apps from the 'full_image'
 # to shrink the final image size.
 #
-COPY --from=full_image /ne-deps /
+COPY --from=full_image / /
 
 COPY bin/hello.eif /home
 COPY hello/run.sh  /home
